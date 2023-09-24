@@ -32,6 +32,7 @@ Artisan::command('reg_menu_commands', function () {
     $bot->registerCommands([
         'curs' => 'Текущий курс $',
         'hello' => 'Поздоровается с вами',
+        'actions' => 'Действия',
     ])->send();
 
 })->purpose('Зарегистрировать команды меню бота');

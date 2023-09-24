@@ -2,7 +2,10 @@
 
 namespace App\Telegram;
 
+use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Handlers\WebhookHandler;
+use DefStudio\Telegraph\Keyboard\Button;
+use DefStudio\Telegraph\Keyboard\Keyboard;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Stringable;
 use GuzzleHttp\Client;
@@ -52,6 +55,17 @@ class Handler extends WebhookHandler
     {
         $this->reply('*Неизвестная команда*');
 
+    }
+
+
+    public function actions(): void
+    {
+        Telegraph::message('Выбери действие')
+            ->keyboard(Keyboard::make()->buttons([
+                Button::make('Получить курс $')->action('curs'),
+                Button::make('Перейти на сайт iteush.ru')->url('https://iteush.ru'),
+            ])
+            )->send();
     }
 
 
