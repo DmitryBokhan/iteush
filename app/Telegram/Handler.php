@@ -24,6 +24,13 @@ class Handler extends  WebhookHandler
         } else {
             $this->reply('*Неизвестная команда*');
         }
-        
+
+    }
+
+
+    // Принимаем текс из сообщения чата и делаем что-то. В данном случае просто отвечаем этим же текстом
+    public function handleChatMessage(Stringable $text): void
+    {
+        $this->reply($text);
     }
 }
