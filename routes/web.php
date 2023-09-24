@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/send', function () {
+    \App\Jobs\SendMessageTelegram::dispatch()->onQueue('telegram_message');
+});
+
