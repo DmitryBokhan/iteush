@@ -17,3 +17,21 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+
+Artisan::command('reg_menu_commands', function () {
+
+    /** @var \DefStudio\Telegraph\Models\TelegraphBot $bot */
+    $bot = \DefStudio\Telegraph\Models\TelegraphBot::find(1);
+    dump($bot->url()); //получим URL бота
+    dump($bot->info()); // получим подробную информацию о боте
+
+
+    //так мы регистрируем команды меню бота
+    /** @var \DefStudio\Telegraph\Models\TelegraphBot $bot */
+    $bot->registerCommands([
+        'curs' => 'Текущий курс $',
+        'hello' => 'Поздоровается с вами',
+    ])->send();
+
+})->purpose('Зарегистрировать команды меню бота');
