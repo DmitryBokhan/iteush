@@ -18,6 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/send', function () {
-    \App\Jobs\SendMessageTelegram::dispatch()->onQueue('telegram_message');
+   // \App\Jobs\SendMessageTelegram::dispatch()->onQueue('telegram_message');
 });
 
