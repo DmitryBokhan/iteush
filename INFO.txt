@@ -7,3 +7,7 @@ https://www.youtube.com/watch?v=1J8l3pCc8p8
 
 Как настроить очереди
 https://www.youtube.com/watch?v=XaIkHyORbzg
+
+
+Как настроить supervisor
+https://www.youtube.com/watch?v=eqKEbJzkpGc
