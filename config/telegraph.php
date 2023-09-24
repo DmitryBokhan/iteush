@@ -13,7 +13,7 @@ return [
      * Sets Telegraph messages default parse mode
      * allowed values: html|markdown|MarkdownV2
      */
-    'default_parse_mode' => Telegraph::PARSE_HTML,
+    'default_parse_mode' => Telegraph::PARSE_MARKDOWN,
 
     /*
      * Sets the handler to be used when Telegraph
@@ -21,7 +21,8 @@ return [
      *
      * For reference, see https://defstudio.github.io/telegraph/webhooks/overview
      */
-    'webhook_handler' => DefStudio\Telegraph\Handlers\EmptyWebhookHandler::class,
+//    'webhook_handler' => DefStudio\Telegraph\Handlers\EmptyWebhookHandler::class, // заглушка
+    'webhook_handler' => App\Telegram\Handler::class,
 
     /*
      * Sets a custom domain when registering a webhook. This will allow a local telegram bot api server
@@ -47,12 +48,12 @@ return [
         /*
          * if enabled, allows callback queries from unregistered chats
          */
-        'allow_callback_queries_from_unknown_chats' => false,
+        'allow_callback_queries_from_unknown_chats' => true,
 
         /*
          * if enabled, allows messages and commands from unregistered chats
          */
-        'allow_messages_from_unknown_chats' => false,
+        'allow_messages_from_unknown_chats' => true,
 
         /*
          * if enabled, store unknown chats as new TelegraphChat models
