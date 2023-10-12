@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +20,24 @@ Route::get('/', function () {
 });
 
 Route::get('/send', function () {
-   // \App\Jobs\SendMessageTelegram::dispatch()->onQueue('telegram_message');
+    \App\Jobs\SendMessageTelegram::dispatch()->onQueue('telegram_message');
+});
+
+Route::get('qr', function(){
+
+
+        $url = 'https://example.com'; // Замените URL на свой
+        $qrCode = QrCode::size(300)->generate($url); // Создать QR-код
+
+        // Возвращаем представление с QR-кодом
+        return view('qr_code', ['qrCode' => $qrCode]);
+
+});
+
+Route::get('qrcode', function () {
+    // тут примеры:
+    // https://www.itsolutionstuff.com/post/how-to-generate-qr-code-in-laravel-10example.html
+
+    return QrCode::size(300)->generate('https://example.com');
 });
 
